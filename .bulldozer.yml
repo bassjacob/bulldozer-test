@@ -1,19 +1,18 @@
-# "version" is the configuration version, currently "1".
 version: 1
 
 merge:
+  whitelist:
+    labels: ["merge when ready"]
+    comment_substrings: ["==MERGE_WHEN_READY=="]
   blacklist:
     labels: ["do not merge"]
     comment_substrings: ["==DO_NOT_MERGE=="]
-
   method: squash
-
   options:
     squash:
-      body: "summarize_commits"
-
+      body: summarize_commits
   delete_after_merge: true
 
 update:
-  blacklist:
-    labels: ["Do Not Update"]
+  whitelist:
+    labels: ["wip", "update me"]
